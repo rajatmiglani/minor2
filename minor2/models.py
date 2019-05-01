@@ -17,5 +17,10 @@ class S_details(models.Model):
 
 
 class Uploadfile(models.Model):
-	file=models.FileField("uploaded file")
+	files=models.CharField(max_length=2000)
+	#file=models.FileField("uploaded file")
+
+class uploadcode(models.Model):
+	code=models.CharField(max_length=2000)
+
 	

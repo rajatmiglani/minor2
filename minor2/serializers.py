@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from minor2 import models
-from minor2.models import Auth,questions,S_details,Uploadfile
+from minor2.models import Auth,questions,S_details,Uploadfile,uploadcode
 from rest_framework import exceptions
 from django.contrib.auth.models import User
 
@@ -20,3 +20,9 @@ class S_detailsserializer(serializers.ModelSerializer):
 			'subject_code',
 			'marks'
 		)
+
+class codeSerializer(serializers.ModelSerializer):
+	class Meta:
+		model=uploadcode
+		fields=('code',
+			)

@@ -30,6 +30,8 @@ urlpatterns = [
     url(r'^auth/',views.authentication.as_view()),
     url(r'^batchdetails/',views.batchdetails.as_view()),
     url(r'^api/', include('fileupload_rest.urls',namespace='api') ),
+    url(r'^savefile/',views.submitcode.as_view()),
+    url(r'^marks/',views.answer.as_view()), 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 
 #urlpatterns=format_suffix_patterns(urlpatterns)
