@@ -47,7 +47,7 @@ class submit_marks(APIView):
 		obj.save()
 		return Response("ok")
 
-class submit_file(APIView):
+'''class submit_file(APIView):
 	def get(self,request):
 		#file=request.data.get('file','')
 		#obj=Uploadfile(file=file)
@@ -62,7 +62,7 @@ class submit_file(APIView):
 		#file=request.FILES['path']
 		#file=requests.get(path)
 		#fs=FileSystemStorage()
-		#fs.save(file.name,file)
+		#fs.save(file.name,file)'''
 		
 class submitcode(APIView):
 	def post(self,request):
@@ -87,3 +87,5 @@ class answer(APIView):
 				array.append(line)
 			s=""
 			s=s.join(array)
+			#print(s)
+			return Response(s)
