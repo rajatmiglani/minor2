@@ -23,12 +23,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 from rest_framework import routers
 admin.autodiscover()
+#app_name="minor2"
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^quiz/',views.quiz.as_view()),
     url(r'^auth/',views.authentication.as_view()),
     url(r'^batchdetails/',views.batchdetails.as_view()),
-    url(r'^api/', include('fileupload_rest.urls') ),
+    url(r'^api/', include('fileupload_rest.urls',namespace='api') ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
 
-urlpatterns=format_suffix_patterns(urlpatterns)
+#urlpatterns=format_suffix_patterns(urlpatterns)

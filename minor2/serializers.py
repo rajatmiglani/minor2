@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class questionSerializer(serializers.ModelSerializer):
 	class Meta:
 		model=questions
-		fields=('ques'
+		fields=('ques',
 			)
 
 class S_detailsserializer(serializers.ModelSerializer):

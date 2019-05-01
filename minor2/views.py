@@ -1,25 +1,25 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView , status
-from .models import Auth
+from .models import Auth,questions
 from .serializers import questionSerializer,S_detailsserializer
 class authentication(APIView):
 	def post(self,request):
 		pasw=Auth.objects.get(userid=request.data.get('userid','')).password
 		print("pasw is " + str(pasw))
 		if pasw==request.data.get('password',''):
-			return Response("login successful")
+			return Response(1)
 		return Response("not found")
 
 class quiz(APIView):
 
 	def get(self,request):
 		quest=questions.objects.all()
-		print(quest)
+		#print(quest)
 		serializer=questionSerializer(quest,many=True)
 		return Response(serializer.data)
 
 	def post(self,request):
-		subject_code = request.data.get('subject_code', '')
+		#subject_code = request.data.get('subject_code', '')
 		ques = request.data.get('ques', '')
 		obj = questions(subject_code=subject_code, ques=ques)
 		obj.save()
