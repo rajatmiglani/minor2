@@ -77,9 +77,26 @@ class submitcode(APIView):
 		#serializer=codeSerializer(cd,many=True)
 		#print(latest_change.code)
 		f=open("code.txt","w")
+		boo=True
+		paramters=[]
 		for line in latest_change.code:
+			if boo:
+				paramters=line
+				boo=False
 			f.write(line)
 		f.close()
+		paramters=paramters.split()
+		language=""
+		if paramters[0]=="1":
+			language=".py"
+		elif paramters[0]=="2":
+			language=".c"
+		else:
+			language=".cpp"
+		# print("Language is ",language)
+		os.system("mv code.txt ./compiler/input/test"+language)
+		os.system("cd compiler;sudo bash docker_init.sh")
+		os.system("mv ./compiler/output/output.txt marks.txt")
 		return Response("ok")
 
 class answer(APIView):
