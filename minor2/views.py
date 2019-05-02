@@ -20,7 +20,10 @@ class quiz(APIView):
 		quest=questions.objects.all()
 		#print(quest)
 		serializer=questionSerializer(quest,many=True)
-		return Response(serializer.data)
+		latest_change = questions.objects.last()
+		return Response(latest_change.ques)
+		#return Response(serializer.data)
+
 
 	def post(self,request):
 		#subject_code = request.data.get('subject_code', '')
@@ -72,7 +75,7 @@ class submitcode(APIView):
 		latest_change = uploadcode.objects.last()
 		#cd=uploadcode.objects.all()
 		#serializer=codeSerializer(cd,many=True)
-		print(latest_change.code)
+		#print(latest_change.code)
 		f=open("code.txt","w")
 		for line in latest_change.code:
 			f.write(line)
